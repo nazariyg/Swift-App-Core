@@ -1,4 +1,4 @@
-# SwiftAppCore
+## Swift App Core
 
 In this repository, you are welcomed to get acquainted with my coding style, design approaches, and coding techniques.
 
