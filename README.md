@@ -1,2 +1,3 @@
 # SwiftAppCore
-The core of my Swift 4 iOS apps
+
+The core of my own Swift 4 iOS apps.
