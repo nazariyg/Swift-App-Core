@@ -1,0 +1,7 @@
+// Copyright © 2018 Nazariy Gorpynyuk.
+// All rights reserved.
+
+#include "Common.xcconfig"
+
+ENVIRONMENT = Dev
+APP_NAME = AppName Dev
