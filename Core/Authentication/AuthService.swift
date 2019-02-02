@@ -12,8 +12,7 @@ public protocol AuthServiceProtocol {
     func signingUp(
         name: String,
         password: String,
-        email: String?,
-        measurementSystem: MeasurementSystem)
+        email: String?)
         -> SpEr<APIUser>
     func loggingIn(name: String, password: String) -> SpEr<APIUser>
     func checkingLoggedIn() -> SpEr<Bool>
@@ -65,19 +64,14 @@ public final class AuthService: AuthServiceProtocol, EventEmitter, SharedInstanc
     public func signingUp(
         name: String,
         password: String,
-        email: String?,
-        measurementSystem: MeasurementSystem)
+        email: String?)
         -> SpEr<APIUser> {
-
-        let alterUserIDs = AlterUserIDStore.ids
 
         let endpoint =
             Backend.API.Auth.createUser(
                 name: name,
                 password: password,
-                email: email,
-                measurementSystem: measurementSystem,
-                alterUserIDs: alterUserIDs)
+                email: email)
 
         return
             BackendAPIRequester.making(endpoint.request)
@@ -92,13 +86,10 @@ public final class AuthService: AuthServiceProtocol, EventEmitter, SharedInstanc
     }
 
     public func loggingIn(name: String, password: String) -> SpEr<APIUser> {
-        let alterUserIDs = AlterUserIDStore.ids
-
         let endpoint =
             Backend.API.Auth.logIn(
                 name: name,
-                password: password,
-                alterUserIDs: alterUserIDs)
+                password: password)
 
         return
             BackendAPIRequester.making(endpoint.request)

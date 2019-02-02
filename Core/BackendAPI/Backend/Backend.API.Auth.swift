@@ -32,9 +32,7 @@ public extension Backend.API.Auth {
                 parameters: HTTPRequestParameters([
                     "name": name,
                     "password": password,
-                    "email": email.optionalJSONParamValue,
-                    "measurement_system": measurementSystem.value,
-                    "alter_user_ids": alterUserIDs
+                    "email": email.optionalJSONParamValue
                 ], placement: .body(encoding: .json)),
                 hasSensitiveData: true)
 
@@ -49,8 +47,7 @@ public extension Backend.API.Auth {
                 method: .post,
                 parameters: HTTPRequestParameters([
                     "name": name,
-                    "password": password,
-                    "alter_user_ids": alterUserIDs
+                    "password": password
                 ], placement: .body(encoding: .json)),
                 hasSensitiveData: true)
 

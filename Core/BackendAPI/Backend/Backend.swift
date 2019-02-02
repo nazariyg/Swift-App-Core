@@ -30,14 +30,11 @@ public struct Backend: RemoteAPI {
             case createUser(
                 name: String,
                 password: String,
-                email: String?,
-                measurementSystem: MeasurementSystem,
-                alterUserIDs: [String])
+                email: String?)
 
             case logIn(
                 name: String,
-                password: String,
-                alterUserIDs: [String])
+                password: String)
 
             case checkLoggedIn
 
