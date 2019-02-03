@@ -2,12 +2,6 @@
 
 In this repository, you are welcomed to get acquainted with my coding style, design approaches, and coding techniques.
 
-### App Modularity
-
-Modular app design, in which the app is composed of separate frameworks, is beneficial in coordinating team work on large projects as well as for practical reasons of keeping Xcode build times as small as possible. It may take up to 30 seconds to build a large non-modular Swift project after making any minor change in its code.
-
-Therefore it's crucial to take the modular approach at the very start of developing an app aimed at growth.
-
 ### Cornerstones & Core
 
 There are two centerpiece modules to my apps, **Cornerstones** framework and **Core** framework.
