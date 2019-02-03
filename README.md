@@ -1,16 +1,18 @@
 ## Swift App Core
 
-In this repository, you are welcomed to get acquainted with my coding style, design approaches, and coding techniques.
+In this repository, you can get acquainted with my coding style, design approaches, and programming techniques.
 
 ### Cornerstones & Core
 
 There are two centerpiece modules to my apps, **Cornerstones** framework and **Core** framework.
 
-The mission of **Cornerstones** is to supplement the Apple's Foundation framework with some extra convenience. The Cornerstones framework is completely agnostic about the app's business logic and deals with Swift language itself, Swift types, concurrency, basic UIKit and Core Animation, and networking entities.
+The mission of **Cornerstones** is to supplement the Apple's Foundation framework with extra convenience. The Cornerstones framework is completely agnostic about the app's business logic and deals with Swift language itself, Swift types, concurrency, basic UIKit and Core Animation, and networking entities.
 
 The **Core** framework, on the other hand, provides components to power the app's essential functionality, which includes configuration, logging, FRP, persistent storage, error handling, networking and serialization, backend API, authentication, remote notifications, user management, and core UI.
 
 Both frameworks are written in Swift 4.2. My FRP preference is [ReactiveSwift](https://github.com/ReactiveCocoa/ReactiveSwift).
+
+This repository contains the complete source code for the two frameworks. Below are only some highlights that may be points of interest.
 
 ### Cornerstones Highlights
 
@@ -37,8 +39,6 @@ Both frameworks are written in Swift 4.2. My FRP preference is [ReactiveSwift](h
 * [**HTTP**](Cornerstones/Networking/HTTP) Entities for HTTP networking.
 
 ### Core Highlights
-
-* [**App**](Core/Application/App.swift) The application class.
 
 * [**Log**](Core/Logging/Log.swift) & [**LogManager**](Core/Logging/LogManager.swift) Logging based on [SwiftyBeaver](https://github.com/SwiftyBeaver/SwiftyBeaver).
 
