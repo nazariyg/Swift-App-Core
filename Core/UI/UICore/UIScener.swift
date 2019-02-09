@@ -179,7 +179,7 @@ public final class UIScener: UIScenerProtocol, SharedInstance {
     }
 
     public func up<Scene: UIScene>(_: Scene.Type) {
-        next(Scene.self, transitionStyle: .defaultUp)
+        up(Scene.self, transitionStyle: .defaultUp)
     }
 
     public func up<Scene: UIScene>(_: Scene.Type, transitionStyle: UISceneTransitionStyle) {
