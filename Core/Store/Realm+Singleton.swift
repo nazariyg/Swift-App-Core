@@ -20,12 +20,17 @@ public extension Realm {
                     // Add or replace.
                     let existingObjects = objects(key)
                     modify {
+                        var objectAlreadyExists = false
                         existingObjects.forEach { existingObject in
                             if !existingObject.isSameObject(as: object) {
                                 delete(existingObject)
+                            } else {
+                                objectAlreadyExists = true
                             }
                         }
-                        add(object)
+                        if !objectAlreadyExists {
+                            add(object)
+                        }
                     }
                 } else {
                     // Delete.
