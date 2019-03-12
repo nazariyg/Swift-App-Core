@@ -2,6 +2,7 @@
 // All rights reserved.
 
 import Foundation
+import Cornerstones
 import RealmSwift
 
 // Replacement for user-unspecific `UserDefaults` in user-specific Realm stores.
@@ -43,25 +44,29 @@ public extension Realm {
         public subscript(key: String) -> Value? {
             get {
                 // Find and return if exists.
-                let object = store.objects(Model.self).filter("key == %@", key).first
-                return object?.value as? Value
+                let existingObjects = store.objects(Model.self).filter("key == %@", key)
+                assert(existingObjects.count <= 1)
+                return existingObjects.first?.value as? Value
             }
             set(value) {
-                if let value = value {
-                    // Add or replace.
-                    let existingObjects = store.objects(Model.self).filter("key == %@", key)
-                    var object = Model()
-                    object.key = key
-                    object.value = value as! Model.Value
-                    store.modify {
-                        store.delete(existingObjects)
-                        store.add(object)
-                    }
-                } else {
-                    // Delete if already exists.
-                    let existingObjects = store.objects(Model.self).filter("key == %@", key)
-                    store.modify {
-                        store.delete(existingObjects)
+                // Relying on the fact that `Model.self` is a singleton itself.
+                synchronized(Model.self) {
+                    if let value = value {
+                        // Add or replace.
+                        var object = Model()
+                        object.key = key
+                        object.value = value as! Model.Value
+                        let existingObjects = store.objects(Model.self).filter("key == %@", key)
+                        store.modify {
+                            store.delete(existingObjects)
+                            store.add(object)
+                        }
+                    } else {
+                        // Delete.
+                        let existingObjects = store.objects(Model.self).filter("key == %@", key)
+                        store.modify {
+                            store.delete(existingObjects)
+                        }
                     }
                 }
             }
